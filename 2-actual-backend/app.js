@@ -8,8 +8,25 @@ const { getStoredItems, storeItems } = require('./data/items');
 const app = express();
 const cors = require('cors');
 
+
+const allowedOrigins = ['https://react-frontend-zeta-blue.vercel.app'];
+
+
 app.use(bodyParser.json());
 app.use(cors());
+
+// CORS middleware configuration
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true); // Allow requests from the allowed origins
+    } else {
+      callback(new Error('Not allowed by CORS')); // Block requests from non-allowed origins
+    }
+  },
+  methods: ['GET', 'POST'], // Allowed methods
+  allowedHeaders: ['Content-Type'], // Allowed headers
+};
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
