@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const serverless = require('serverless-http');
 
 const { getStoredItems, storeItems } = require('./data/items');
 
@@ -42,3 +43,6 @@ app.post('/items', async (req, res) => {
 
 const port = process.env.PORT || 8080;
 app.listen(port, ()=>console.log(`port started at: ${port}`));
+
+module.exports = app;
+module.exports.handler = serverless(app);
