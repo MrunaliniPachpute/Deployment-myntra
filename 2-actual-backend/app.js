@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const dotenv = require("dotenv");
 
+dotenv.config();
 const { getStoredItems, storeItems } = require('./data/items');
 
 const app = express();
@@ -40,6 +42,7 @@ app.post('/items', async (req, res) => {
   res.status(201).json({ message: 'Stored new item.', item: newItem });
 });
 
-// const port = process.env.PORT || 8080;
-// app.listen(port, ()=>console.log(`port started at: ${port}`));
-module.exports = app;
+
+
+const port = process.env.PORT || 8080;
+app.listen(port, ()=>console.log(`port started at: ${port}`));
