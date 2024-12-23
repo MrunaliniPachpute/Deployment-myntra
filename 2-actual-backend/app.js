@@ -35,9 +35,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get('/', (req, res) =>{
-//   res.send('Welcome')
-// })
+app.get('/', (req, res) =>{
+  res.send('Welcome')
+})
 
 app.get('/items', async (req, res) => {
   const storedItems = await getStoredItems();
