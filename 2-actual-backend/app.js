@@ -40,5 +40,6 @@ app.post('/items', async (req, res) => {
   res.status(201).json({ message: 'Stored new item.', item: newItem });
 });
 
-const port = process.env.PORT || 8080;
-app.listen(port, ()=>console.log(`port started at: ${port}`));
+// const port = process.env.PORT || 8080;
+// app.listen(port, ()=>console.log(`port started at: ${port}`));
+module.exports = app;
