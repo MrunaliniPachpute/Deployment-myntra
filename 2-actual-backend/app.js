@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) =>{
-  res.send('Welcome')
+  res.send('Welcome to myntra items store')
 })
 
 app.get('/items', async (req, res) => {
